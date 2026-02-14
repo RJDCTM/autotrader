@@ -25,11 +25,21 @@ class BrokerConfig:
     trading_mode: str = "paper"  # "paper" or "live"
     data_feed: str = "iex"      # "iex" (free) or "sip" (paid, more complete)
 
-    def __post_init__(self):
+   def __post_init__(self):
         self.api_key = os.environ.get("ALPACA_API_KEY", self.api_key)
         self.secret_key = os.environ.get("ALPACA_SECRET_KEY", self.secret_key)
         self.base_url = os.environ.get("ALPACA_BASE_URL", self.base_url)
         self.trading_mode = os.environ.get("TRADING_MODE", self.trading_mode)
+
+        # Fallback: Streamlit secrets (for Streamlit Cloud deployment)
+        if not self.api_key or not self.secret_key:
+            try:
+                import streamlit as st
+                self.api_key = self.api_key or st.secrets.get("ALPACA_API_KEY", "")
+                self.secret_key = self.secret_key or st.secrets.get("ALPACA_SECRET_KEY", "")
+                self.base_url = st.secrets.get("ALPACA_BASE_URL", self.base_url)
+            except Exception:
+                pass
 
         if not self.api_key or not self.secret_key:
             raise ValueError(
