@@ -1,0 +1,7 @@
+alpaca-trade-api>=3.0.0
+pandas>=1.5.0
+numpy>=1.23.0
+python-dotenv>=1.0.0
+openpyxl>=3.1.0
+streamlit>=1.30.0
+plotly>=5.18.0
