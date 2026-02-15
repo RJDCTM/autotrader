@@ -55,6 +55,16 @@ def check_connection():
     broker, error = get_broker()
     if error:
         st.error(f"⚠️ Broker connection failed: {error}")
+        st.info("Add your keys in Settings → Secrets (TOML format)")
+        st.code('ALPACA_API_KEY = "your_key"\nALPACA_SECRET_KEY = "your_secret"\nALPACA_BASE_URL = "https://paper-api.alpaca.markets"', language="toml")
+        st.stop()
+    return broker
+
+def check_connection():
+    """Verify broker connection. Returns broker or shows error."""
+    broker, error = get_broker()
+    if error:
+        st.error(f"⚠️ Broker connection failed: {error}")
         st.info("Check your `.env` file has valid ALPACA_API_KEY and ALPACA_SECRET_KEY")
         st.stop()
     return broker
