@@ -1,0 +1,18 @@
+{
+  "alpaca_api_key": "YOUR_PAPER_API_KEY_HERE",
+  "alpaca_api_secret": "YOUR_PAPER_API_SECRET_HERE",
+  "paper_mode": true,
+  "quickview_csv": "Quickview_v5_Feb17.csv",
+
+  "v5_min_score": 40,
+  "v5_max_watchlist": 5,
+  "v5_buy_zone_pct": 3.0,
+  "v5_enabled": true,
+
+  "mancini_enabled": true,
+
+  "poll_interval_seconds": 30,
+  "max_daily_loss": 1500.0,
+  "max_daily_trades_mancini": 5,
+  "max_open_positions": 15
+}
